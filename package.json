@@ -2,7 +2,10 @@
   "name": "ps-redux",
   "description": "React and Redux Pluralsight course by Cory House",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.dev.js  --port 3000"
+    "start": "run-p start:dev start:api",
+    "start:dev": "webpack-dev-server --config webpack.config.dev.js  --port 3000",
+    "prestart:api": "node tools/createMockDb.js",
+    "start:api": "node tools/apiServer.js"
   },
   "dependencies": {
     "bootstrap": "4.3.1",
@@ -53,40 +56,40 @@
   "engines": {
     "node": ">=8"
   },
-  "babel":{
-    "presets":[
+  "babel": {
+    "presets": [
       "babel-preset-react-app"
     ]
   },
-  "eslintConfig":{
-    "extends":[
+  "eslintConfig": {
+    "extends": [
       "eslint:recommended",
       "plugin:react/recommended",
       "plugin:import/errors",
       "plugin:import/warnings"
     ],
-    "parser":"babel-eslint",
-    "parserOptions":{
+    "parser": "babel-eslint",
+    "parserOptions": {
       "ecmaVersion": 2018,
       "sourceType": "module",
-      "ecmaFeatures":{
+      "ecmaFeatures": {
         "jsx": true
       }
     },
-    "env":{
+    "env": {
       "browser": true,
       "node": true,
       "es6": true,
       "jest": true
     },
-    "rules":{
+    "rules": {
       "no-debugger": "off",
       "no-console": "off",
-      "no-unused-vars":"warn",
+      "no-unused-vars": "warn",
       "react/prop-types": "warn"
     },
-    "settings":{
-      "react":{
+    "settings": {
+      "react": {
         "version": "detect"
       }
     },
